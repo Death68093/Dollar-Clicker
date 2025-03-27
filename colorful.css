@@ -1,0 +1,234 @@
+/* General Body Styles */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  color: white;
+  overflow: hidden;
+}
+
+/* Main Button Styles */
+#mainBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.2s, filter 0.3s;
+}
+
+#mainBtn img {
+  display: block;
+  width: 450px;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+#mainBtn:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+/* Left and Right Info Panels */
+.left, .right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 220px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.left {
+  left: 20px;
+  text-align: left;
+  border-left: 4px solid #3498db;
+}
+
+.right {
+  right: 20px;
+  text-align: right;
+  border-right: 4px solid #e67e22;
+}
+
+/* Footer Styles */
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 10px;
+  text-align: center;
+  color: #ddd;
+  font-size: 14px;
+}
+
+/* Button Styles */
+button {
+  background: linear-gradient(135deg, #ff7eb3, #ff758c);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  margin: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(255, 117, 140, 0.4);
+}
+
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(255, 117, 140, 0.6);
+}
+
+button.red {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+button.green {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+
+button.red:hover {
+  background: linear-gradient(135deg, #c0392b, #962d22);
+}
+
+button.green:hover {
+  background: linear-gradient(135deg, #27ae60, #1d8348);
+}
+
+/* Hidden Button */
+.hidden {
+  display: none;
+}
+
+/* Money & Click Power Display */
+.moneyShow, .clicksShow, .clickStrengthShow, .autoPowerShow, .timePlayedShow {
+  font-size: 20px;
+  font-weight: bold;
+  color: #f1f1f1;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Upgrade Cost Display */
+.thickFingerCostShow, .junkPrinterCostShow, .badPrinterCostShow, .printerCostShow,
+.okPrinterCostShow, .goodPrinterCostShow, .greatPrinterCostShow, .superPrinterCostShow,
+.amazingPrinterCostShow, .bestPrinterCostShow, .magicalPrinterCostShow {
+  font-size: 16px;
+  color: #f39c12;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Animation for Button Clicks */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+button:active {
+  animation: pulse 0.3s ease-in-out;
+}
+
+/* Pop-Up Cheat Menu */
+.cheats, .cheatGuide {
+  background: rgba(0, 0, 0, 0.85);
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+  width: 80%;
+  max-width: 500px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+  text-align: left;
+  font-size: 16px;
+}
+
+/* Cheat Menu Headings */
+.cheats h2, .cheatGuide h2 {
+  color: #ffcc00;
+  font-size: 22px;
+  border-bottom: 2px solid #ffcc00;
+  padding-bottom: 8px;
+}
+
+/* Cheat Menu Text */
+.cheats p, .cheatGuide p {
+  font-size: 16px;
+  color: #ddd;
+}
+
+/* Ad Image */
+.adImg {
+  width: 50px;
+  display: inline;
+  filter: drop-shadow(2px 2px 5px rgba(255, 255, 255, 0.5));
+}
+
+/* Floating Particles Animation */
+@keyframes floatingParticles {
+  0% {
+    transform: translateY(0px);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-20px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 0.5;
+  }
+}
+
+.particle {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  animation: floatingParticles 3s infinite ease-in-out;
+}
+
+/* Generate Particles */
+.particle:nth-child(1) {
+  top: 20%;
+  left: 10%;
+  animation-duration: 4s;
+}
+.particle:nth-child(2) {
+  top: 40%;
+  left: 80%;
+  animation-duration: 5s;
+}
+.particle:nth-child(3) {
+  top: 60%;
+  left: 30%;
+  animation-duration: 3.5s;
+}
+.particle:nth-child(4) {
+  top: 80%;
+  left: 60%;
+  animation-duration: 6s;
+}
+
+#resetGame {
+  background-color: red;
+  color: black;
+}
