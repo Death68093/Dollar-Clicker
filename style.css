@@ -1,0 +1,218 @@
+/* General Body Styles */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  background-color: #1d1f27;
+  color: white;
+}
+
+/* Main Button Styles */
+#mainBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+#mainBtn img {
+  display: block;
+  width: 500px;
+  border-radius: 10px;
+  user-select: none;
+}
+
+#mainBtn:hover {
+  transform: scale(1.05);
+}
+
+/* Left and Right Div Styles */
+.left, .right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 200px; /* Adjust width as needed */
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.left {
+  left: 20px;
+  text-align: left;
+}
+
+.right {
+  right: 20px;
+  text-align: right;
+}
+
+/* Footer Styles */
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 10px;
+  text-align: center;
+  color: #999;
+  z-index: 0
+}
+
+/* Button Styles */
+button {
+  background-color: #333;
+  color: white;
+  border: 2px solid #444;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+button.red {
+  background-color: #e74c3c;
+  border-color: #c0392b;
+}
+
+button.green {
+  background-color: #2ecc71;
+  border-color: #27ae60;
+}
+
+button.red:hover {
+  background-color: #c0392b;
+}
+
+button.green:hover {
+  background-color: #27ae60;
+}
+
+/* Hidden Button */
+.hidden {
+  display: none;
+}
+
+/* Money & Click Power Display */
+.moneyShow, .clicksShow, .clickStrengthShow, .autoPowerShow, .timePlayedShow,  .rebirthLevelShow, .showMult
+  font-size: 18px;
+  color: #f1f1f1;
+  margin-bottom: 10px;
+}
+
+/* Upgrade Cost Display */
+.thickFingerCostShow, .junkPrinterCostShow, .badPrinterCostShow, .printerCostShow,
+.okPrinterCostShow, .goodPrinterCostShow, .greatPrinterCostShow, .superPrinterCostShow,
+.amazingPrinterCostShow, .bestPrinterCostShow, .magicalPrinterCostShow, {
+  font-size: 14px;
+  color: #f39c12;
+}
+
+/* Animation for Button Clicks */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+button:active {
+  animation: pulse 0.3s ease-in-out;
+}
+
+.adImg {
+  width: 50px;
+  display: inline;
+}
+
+#resetGame {
+  background-color: red;
+  color: black;
+}
+
+/* Achievement Notification */
+#achievementNotification {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  z-index: 200;
+}
+
+#achievementNotification.show {
+  opacity: 1;
+  animation: slideIn 1s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-50%) translateY(-20px);
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+
+.behind {
+  z-index: 0
+}
+.front {
+  z-index: 100
+}
+
+.closeMenu {
+  background: none;
+  background-color: red;
+}
+
+.screen {
+  width: 100%;
+  height: 100vh;
+}
+
+#digScreen {
+  background-color: #7A4B3A !important;
+  display: none;
+  cursor: url('https://cdn.glitch.global/6ef22356-510c-42f2-98df-a959a784c146/Shovelformouse?v=1743011618873'), auto;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+
+.message {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}

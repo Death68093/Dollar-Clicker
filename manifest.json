@@ -1,0 +1,26 @@
+{
+  "name": "Dollar Clicker",
+  "short_name": "DollarClicker",
+  "description": "An offline version of Dollar Clicker",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "https://cdn.glitch.global/6ef22356-510c-42f2-98df-a959a784c146/ProfilePic?v=1743096261967",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Dollar Clicker V1.0",
+      "short_name": "Dollar V1",
+      "url": "/index.html"
+    }
+  ]
+    
+  
+}
