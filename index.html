@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link id="cssLink" rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./digSite.css">
-    <link rel="manifest" href="./manifest.json">
+    <link id="cssLink" rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="digSite.css" />
+    <link rel="manifest" href="/manifest.json">
+    <meta property="og:title" content="Dollar Clicker" />
+    <meta property="og:description" content="A fun and addictive clicker game. Earn money and level up your character!" />
+    <meta property="og:image" content="https://cdn.glitch.global/6ef22356-510c-42f2-98df-a959a784c146/ProfilePic?v=1743096261967" />
   </head>
   <body>
     <div id="mainScreen" class="screen">
@@ -57,7 +60,10 @@
           <button class="gainMoney">Get $100,000</button>
 
           <div class="cheat-creator">
-            <textarea id="cheatInput" placeholder="Enter your cheat code here"></textarea>
+            <textarea
+              id="cheatInput"
+              placeholder="Enter your cheat code here"
+            ></textarea>
           </div>
 
           <div class="cheat-importer">
@@ -92,7 +98,7 @@
             <option id="modern" selected>Modern (Default)</option>
             <option id="colorful">Colorful</option>
           </select>
-          <hr>
+          <hr />
           <h2><strong>Danger Zone!</strong></h2>
           <div class="dangerZone">
             <button id="resetGame">Reset *DANGER*</button>
@@ -102,43 +108,46 @@
         <dialog id="achievementMenu">
           <button class="closeAchievements closeMenu">X</button>
           <h1>Achievements</h1>
-          <h2>Unlocked: <span class="achievementsUnlocked">None</span>
-</h2>
+          <h2>Unlocked: <span class="achievementsUnlocked">None</span></h2>
           <ul id="achievementList"></ul>
           <!-- This will display the unlocked achievements -->
         </dialog>
 
-        <h1>$<span class="moneyShow">0</span>
-</h1>
-        <br>
+        <h1>$<span class="moneyShow">0</span></h1>
+        <br />
         <button id="mainBtn">
-          <img class="dollar" src="https://cdn.glitch.global/6ef22356-510c-42f2-98df-a959a784c146/$1?v=1742827875188" draggable="false">
+          <img
+            class="dollar"
+            src="https://cdn.glitch.global/6ef22356-510c-42f2-98df-a959a784c146/$1?v=1742827875188"
+            draggable="false"
+          />
         </button>
       </center>
 
       <div class="right front">
         <button class="goToDigScreen">Dig It</button>
-        <button id="showAchievements">Achievements</button><br>
+        <button id="showAchievements">Achievements</button><br />
         <button id="rebirthBtn">
-          Rebirth [$<span class="rebirthCostShow">5,000,000</span>]</button><br>
-        <button id="showSettings">Settings</button><br>
-        <button id="showCheats">Cheats</button><br>
+          Rebirth [$<span class="rebirthCostShow">5,000,000</span>]</button
+        ><br />
+        <button id="showSettings">Settings</button><br />
+        <button id="showCheats">Cheats</button><br />
       </div>
 
       <footer>
-        <hr>
+        <hr />
         <center>
           <h2>
             Clicks: <span class="clicksShow">0</span>
-            <br>
+            <br />
             Click Power: <span class="clickStrengthShow">10000</span>
-            <br>
+            <br />
             Money/Second: <span class="autoPowerShow">0</span>
-            <br>
+            <br />
             Time Played: <span class="timePlayedShow">0</span>
-            <br>
+            <br />
             Rebirth Level: <span class="rebirthLevelShow">0</span>
-            <br>
+            <br />
             Multiplier: <span class="showMult">1</span>
           </h2>
           <dialog id="updateLog">
@@ -147,11 +156,23 @@
         </center>
         <div class="left behind"></div>
         <div class="right">
-          <button class="discord" onclick="window.open('https://discord.gg/JWZTA2dPHF', '_blank')">
-            <img class="adImg" src="https://cdn.glitch.global/6ef22356-510c-42f2-98df-a959a784c146/discord.png?v=1742845113197">
+          <button
+            class="discord"
+            onclick="window.open('https://discord.gg/JWZTA2dPHF', '_blank')"
+          >
+            <img
+              class="adImg"
+              src="https://cdn.glitch.global/6ef22356-510c-42f2-98df-a959a784c146/discord.png?v=1742845113197"
+            />
           </button>
-          <button class="youtube" onclick="window.open('https://www.youtube.com/@death68093?sub_confirmation=1', '_blank')">
-            <img class="adImg" src="https://cdn.glitch.global/6ef22356-510c-42f2-98df-a959a784c146/YouTubeImage?v=1742845236400">
+          <button
+            class="youtube"
+            onclick="window.open('https://www.youtube.com/@death68093?sub_confirmation=1', '_blank')"
+          >
+            <img
+              class="adImg"
+              src="https://cdn.glitch.global/6ef22356-510c-42f2-98df-a959a784c146/YouTubeImage?v=1742845236400"
+            />
           </button>
           <button class="updateLogShow">
             Updates
@@ -176,25 +197,30 @@
       </div>
       <div class="left">
         <button id="upgradeShovelStrength">
-          <img class="shovelUpgradeImg" src="https://cdn.glitch.global/6ef22356-510c-42f2-98df-a959a784c146/Shovel Upgrade?v=1743009133659" draggable="false">
+          <img
+            class="shovelUpgradeImg"
+            src="https://cdn.glitch.global/6ef22356-510c-42f2-98df-a959a784c146/Shovel Upgrade?v=1743009133659"
+            draggable="false"
+          />
         </button>
       </div>
     </div>
 
-    <script src="./variables.js" type="module"></script>
-    <script src="./updateLog.js" type="module"></script>
-    <script src="./digSite.js" type="module" defer></script>
-    <script src="./screenChangers.js" type="module"></script>
-    <script src="./menuClosing.js" type="module" defer></script>
-    <script src="./achievements.js" type="module" defer></script>
-    <script src="./rebirth.js" type="module" defer></script>
-    <script src="./settings.js" type="module" defer></script>
-    <script src="./upgradeButtons.js" type="module" defer></script>
-    <script src="./systemFunctions.js" type="module" defer></script>
-    <script src="./cheats.js" type="module" defer></script>
-    <script src="./script.js" type="module" defer></script>
+    <script src="variables.js" type="module"></script>
+    <script src="updateLog.js" type="module"></script>
+    <script src="digSite.js" type="module" defer></script>
+    <script src="screenChangers.js" type="module"></script>
+    <script src="menuClosing.js" type="module" defer></script>
+    <script src="achievements.js" type="module" defer></script>
+    <script src="rebirth.js" type="module" defer></script>
+    <script src="settings.js" type="module" defer></script>
+    <script src="upgradeButtons.js" type="module" defer></script>
+    <script src="systemFunctions.js" type="module" defer></script>
+    <script src="cheats.js" type="module" defer></script>
+    <script src="script.js" type="module" defer></script>
 
-    <script>// TEMPORARY
+    <script>
+      // TEMPORARY
 
       // END OF TEMPORARY
 
@@ -348,12 +374,15 @@
           },
         };
       }
-      console.log(window.game);</script>
-    <script>if ('serviceWorker' in navigator) {
+      console.log(window.game);
+    </script>
+    <script>
+  if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/service-worker.js')
       .then(() => console.log('Service Worker registered successfully'))
       .catch((error) => console.log('Service Worker registration failed:', error));
-  }</script>
+  }
+</script>
 
   </body>
 </html>
