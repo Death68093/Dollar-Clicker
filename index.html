@@ -2,11 +2,20 @@
 <html lang="en">
   <head>
     <link id="cssLink" rel="stylesheet" href="style.css" />
+    <link id="digSiteCSS" rel="stylesheet" href="digSite.css">
     <link rel="stylesheet" href="digSite.css" />
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <meta property="og:title" content="Dollar Clicker" />
-    <meta property="og:description" content="A fun and addictive clicker game. Earn money and level up your character!" />
-    <meta property="og:image" content="https://cdn.glitch.global/6ef22356-510c-42f2-98df-a959a784c146/ProfilePic?v=1743096261967" />
+    <meta
+      property="og:description"
+      content="A fun and addictive clicker game. Earn money and level up your character!"
+    />
+    <meta
+      property="og:image"
+      content="https://cdn.glitch.global/6ef22356-510c-42f2-98df-a959a784c146/ProfilePic?v=1743096261967"
+    />
   </head>
   <body>
     <div id="mainScreen" class="screen">
@@ -96,7 +105,6 @@
           <label for="themeSelect">Theme: </label>
           <select id="themeSelect">
             <option id="modern" selected>Modern (Default)</option>
-            <option id="colorful">Colorful</option>
           </select>
           <hr />
           <h2><strong>Danger Zone!</strong></h2>
@@ -122,6 +130,29 @@
             draggable="false"
           />
         </button>
+
+        <dialog id="statsMenu">
+          <center>
+            <button class="closeStats closeMenu">X</button>
+
+            <h1>Stats</h1>
+            <h2>
+              Clicks: <span class="clicksShow">0</span>
+              <br />
+              Click Power: <span class="clickStrengthShow">10000</span>
+              <br />
+              Money/Second: <span class="autoPowerShow">0</span>
+              <br />
+              Printers: <span class="printerCountShow">0</span>
+              <br />
+              Time Played: <span class="timePlayedShow">0</span>
+              <br />
+              Rebirth Level: <span class="rebirthLevelShow">0</span>
+              <br />
+              Multiplier: <span class="showMult">1</span>
+            </h2>
+          </center>
+        </dialog>
       </center>
 
       <div class="right front">
@@ -130,26 +161,13 @@
         <button id="rebirthBtn">
           Rebirth [$<span class="rebirthCostShow">5,000,000</span>]</button
         ><br />
+        <button id="showStats">Stats</button><br />
         <button id="showSettings">Settings</button><br />
         <button id="showCheats">Cheats</button><br />
       </div>
 
       <footer>
-        <hr />
         <center>
-          <h2>
-            Clicks: <span class="clicksShow">0</span>
-            <br />
-            Click Power: <span class="clickStrengthShow">10000</span>
-            <br />
-            Money/Second: <span class="autoPowerShow">0</span>
-            <br />
-            Time Played: <span class="timePlayedShow">0</span>
-            <br />
-            Rebirth Level: <span class="rebirthLevelShow">0</span>
-            <br />
-            Multiplier: <span class="showMult">1</span>
-          </h2>
           <dialog id="updateLog">
             <button class="closeUpdates closeMenu">X</button>
           </dialog>
@@ -174,54 +192,37 @@
               src="https://cdn.glitch.global/6ef22356-510c-42f2-98df-a959a784c146/YouTubeImage?v=1742845236400"
             />
           </button>
-          <button class="updateLogShow">
-            Updates
-          </button>
+          <button class="updateLogShow">Updates</button>
         </div>
+        <p class="versionShow"></p>
       </footer>
     </div>
     <div id="digScreen" class="screen" style="backgroundcolor: brown">
       <div class="right">
         <button class="goToMainScreen">Home</button>
-        <!-- Dig site message container -->
-        <div id="digMessage" class="message hidden">
-          <p id="digMessageText"></p>
-        </div>
+        
 
         <!-- Upgrade message container -->
         <div id="upgradeMessage" class="message hidden">
           <p id="upgradeMessageText"></p>
         </div>
-
+        <!-- Dig site message container -->
+        <div id="digMessage" class="message">
+          <p id="digMessageText" class="hidden"></p>
+        </div>
         <div class="collectedArtifacts"></div>
       </div>
       <div class="left">
         <button id="upgradeShovelStrength">
-          <img
-            class="shovelUpgradeImg"
-            src="https://cdn.glitch.global/6ef22356-510c-42f2-98df-a959a784c146/Shovel Upgrade?v=1743009133659"
-            draggable="false"
-          />
+          Shovel Power [$<span class="shovelStrengthUpCostShow"></span>]
         </button>
       </div>
     </div>
-
-    <script src="variables.js" type="module"></script>
-    <script src="updateLog.js" type="module"></script>
-    <script src="digSite.js" type="module" defer></script>
-    <script src="screenChangers.js" type="module"></script>
-    <script src="menuClosing.js" type="module" defer></script>
-    <script src="achievements.js" type="module" defer></script>
-    <script src="rebirth.js" type="module" defer></script>
-    <script src="settings.js" type="module" defer></script>
-    <script src="upgradeButtons.js" type="module" defer></script>
-    <script src="systemFunctions.js" type="module" defer></script>
-    <script src="cheats.js" type="module" defer></script>
-    <script src="script.js" type="module" defer></script>
-
+    
+    
     <script>
       // TEMPORARY
-
+      
       // END OF TEMPORARY
 
       let savedGame = JSON.parse(localStorage.getItem("save"));
@@ -236,6 +237,11 @@
           clickPower: 1,
           autoPower: 0,
           mult: 1,
+          secrets: {
+            version: {
+              found: false,
+            },
+          },
 
           rebirth: {
             cost: 5_000_000,
@@ -321,7 +327,7 @@
               quartz: {
                 chance: 40,
                 rarity: "common",
-                mult: 1,
+                mult: 1.1,
                 count: 0,
                 name: "Quartz",
               },
@@ -372,17 +378,165 @@
               },
             },
           },
+
+          achievements: {
+            gettingStarted: {
+              name: "Getting Started",
+              desc: "Click 10 times",
+              requirement: 10,
+              unlocked: false,
+              message: "You clicked the dollar 10 times!",
+            },
+            easyEnough: {
+              name: "Easy enough",
+              desc: "Click 100 times",
+              requirement: 100,
+              unlocked: false,
+              message: "How does your finger feel?",
+            },
+            clickAddiction: {
+              name: "Click Addiction",
+              desc: "Click 1,000 times",
+              requirement: 1000,
+              unlocked: false,
+              message: "Are you not tired yet?",
+            },
+            ironFinger: {
+              name: "Iron Finger",
+              desc: "Click 10,000 times",
+              requirement: 10000,
+              unlocked: false,
+              message: "You <em>probably</em> need to get a life...",
+            },
+            maniacClicker: {
+              name: "Maniac Clicker",
+              desc: "Click 100,000 times",
+              requirement: 100000,
+              unlocked: false,
+              message:
+                "Yeah.. You <strong>definitely</strong> need to get a life...",
+            },
+            firstUpgrade: {
+              name: "You Faker!",
+              desc: "Buy the first printer",
+              requirement: 1,
+              unlocked: false,
+              message: "What? You're printing money?!",
+            },
+            officeSetup: {
+              name: "Office Setup",
+              desc: "Own 10 printers total",
+              requirement: 10,
+              unlocked: false,
+              message: "Making some dough now!",
+            },
+            scamArtist: {
+              name: "Scam Artist",
+              desc: "Own 50 printers total",
+              requirement: 50,
+              unlocked: false,
+              message: "You better watch out for the cops!",
+            },
+            noob: {
+              name: "Noob",
+              desc: "Play for 1 minute",
+              requirement: 60,
+              unlocked: false,
+              message: "Thanks for playing!",
+            },
+            beginner: {
+              name: "Beginner",
+              desc: "Play for 10 minutes",
+              requirement: 600,
+              unlocked: false,
+              message: "You're still here?",
+            },
+            intermediate: {
+              name: "Intermediate Gamer",
+              desc: "Play for 30 minutes",
+              requirement: 1800,
+              unlocked: false,
+              message: "Wow, you must really like this game!",
+            },
+            player: {
+              name: "Player",
+              desc: "Play for 1 hour",
+              requirement: 3600,
+              unlocked: false,
+              message: "The money must really be addicting...",
+            },
+            gamer: {
+              name: "Gamer",
+              desc: "Play for 2 hours",
+              requirement: 7200,
+              unlocked: false,
+              message: "Ok now, you know you can take a break, right?",
+            },
+            hardcoreGamer: {
+              name: "Hardcore Gamer",
+              desc: "Play for 5 hours",
+              requirement: 18000,
+              unlocked: false,
+              message: "I have an idea! GO TOUCH GRASS you bum!",
+            },
+            cheater: {
+              name: "CHEATER!!!",
+              desc: "You used cheats",
+              unlocked: false,
+              message: "I can't believe this... you lazy bum..",
+            },
+          },
+          
         };
       }
       console.log(window.game);
     </script>
     <script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker.js')
-      .then(() => console.log('Service Worker registered successfully'))
-      .catch((error) => console.log('Service Worker registration failed:', error));
-  }
-</script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("/service-worker.js")
+          .then((registration) => {
+            registration.addEventListener("updatefound", () => {
+              const newWorker = registration.installing;
+              newWorker.addEventListener("statechange", () => {
+                if (
+                  newWorker.state === "installed" &&
+                  navigator.serviceWorker.controller
+                ) {
+                  location.reload();
+                }
+              });
+            });
+          });
+      }
+      document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();  // This disables the right-click menu
+});
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("Html loaded!");
+  console.log(`Time: ${Date.now()}`)
+});
+      window.addEventListener("load", () => {
+  console.log("All resources loaded!");
+  console.log(`Time loaded: ${Date.now()}`)
+    });
+    </script>
 
+    <script src="variables.js" type="module"></script>
+    <script src="stats.js" type="module"></script>
+    <script src="systemFunctions.js" type="module" defer></script>
+    <script src="secrets.js" type="module" defer></script>
+    <script src="updateLog.js" type="module"></script>
+    <script src="digSite.js" type="module" defer></script>
+    <script src="screenChangers.js" type="module"></script>
+    <script src="menuClosing.js" type="module" defer></script>
+    <script src="achievements.js" type="module" defer></script>
+    <script src="rebirth.js" type="module" defer></script>
+    <script src="settings.js" type="module" defer></script>
+    <script src="upgradeButtons.js" type="module" defer></script>
+    <script src="cheats.js" type="module" defer></script>
+    <script src="cops.js" type="module" defer></script>
+    <script src="service-worker.js" type="module" defer></script>
+    <script src="script.js" type="module" defer></script>
   </body>
 </html>
