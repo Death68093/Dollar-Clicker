@@ -1,25 +1,22 @@
 let game = window.game;
 let collectedArtifactsShow = document.querySelector(".collectedArtifacts");
-
 let digSite = document.querySelector("#digScreen");
 let artifacts = game?.digSite?.artifacts;
 let shovelPower = game?.digSite?.shovel?.strength?.power || 1;
 console.log(`Shovel Power: ${shovelPower}`);
-
 // Get the message containers
-let digMessage = document.getElementById("digMessage");
+let digMessage = document.getElementById("digMessageText");
 let upgradeMessage = document.getElementById("upgradeMessage");
 
 // Function to show messages with a custom timeout
-function showMessage(element, message, duration = 2000) {
-  let messageText = element.querySelector("p");
-  messageText.textContent = message;
-  element.classList.remove("hidden");
-
-  setTimeout(() => {
-    element.classList.add("hidden");
-  }, duration);
+function showMessage(message, duration = 2000) {
+    digMessage.textContent = message;
+    digMessage.classList.remove('hidden');
+    setTimeout(() => {
+        digMessage.classList.add('hidden');
+    }, duration);
 }
+
 
 // Main Digging
 digSite.addEventListener("click", () => {
@@ -66,15 +63,38 @@ digSite.addEventListener("click", () => {
         }
 
         updateCollectedArtifacts();
-        showMessage(digMessage, `Artifact found! ${foundArtifact.name}`);
+        showMessage(`Artifact found! ${foundArtifact.name}`);
       } else {
         console.log("No matching artifact found.");
-        showMessage(digMessage, "No artifacts found, try again!");
+        showMessage("No artifacts found, try again!");
       }
     } else {
       console.log("Nothing found.");
-      showMessage(digMessage, "Nothing found. Try again!");
+      showMessage("Nothing found. Try again!");
     }
+  };
+  
+  switch (rand) {
+    case 4:
+      showMessage("You found $500,000!");
+      game.money += 500000;
+      break;
+    case 5:
+      showMessage("You found $100,000!");
+      game.money += 100000;
+      break;
+    case 6:
+      showMessage("You found $1,000,000!");
+      game.money += 1000000;
+      break;
+    case 7:
+      showMessage("You found $1! Lol");
+      game.money += 1;
+      break;
+    case 8:
+      showMessage("You found $2,500,000!");
+      game.money += 2500000;
+      break;
   }
 });
 
@@ -101,16 +121,24 @@ function updateCollectedArtifacts() {
 // Upgrade button functionality
 let upgradeStrengthBtn = document.querySelector("#upgradeShovelStrength");
 let shovel = game?.digSite?.shovel;
+let purchaseAudio = new Audio('https://cdn.glitch.global/6ef22356-510c-42f2-98df-a959a784c146/Purchase?v=1742847967885');
 
 upgradeStrengthBtn.addEventListener("click", () => {
   if (game?.money >= shovel?.strength?.upCost) {
+    purchaseAudio.play();
     game.money -= shovel.strength.upCost; // Deduct cost
     shovel.strength.upCost = Math.floor(shovel.strength.upCost * 1.15); // Increase upgrade cost
     shovel.strength.power = Math.max(1, shovel.strength.power - 2); // Ensure power never goes below 1
     console.log(`Shovel Power Decreased: ${shovel.strength.power}`);
-    showMessage(upgradeMessage, "Shovel strength upgraded!");
+    showMessage("Shovel strength upgraded!");
   } else {
     console.log("Not enough money to upgrade!");
-    showMessage(upgradeMessage, "Not enough money to upgrade!");
+    showMessage("Not enough money to upgrade!");
+    alert(`Not enough money! You need $${shovel?.strength?.upCost - game.money} more!`)
   }
+});
+
+document.addEventListener("mousemove", (e) => {
+    digMessage.style.left = `${e.pageX}px`;
+    digMessage.style.top = `${e.pageY + 10}px`; // Adjusts to be right under
 });
