@@ -1,5 +1,5 @@
 // Change Version here
-let version = "V1.4"
+let version = "V1.5"
 let versionShow = document.querySelector(".versionShow");
 versionShow.textContent = `${version}`
 let upShovelStrengthBtn = document.querySelector("#upgradeShovelStrength");
